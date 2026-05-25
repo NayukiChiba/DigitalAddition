@@ -1,0 +1,20 @@
+from config.paths import (
+    BEST_MODEL_PATH,
+    CHECKPOINTS_DIR,
+    DATASETS_DIR,
+    FIGURES_DIR,
+    LOGS_DIR,
+    OUTPUTS_DIR,
+    TENSORBOARD_DIR,
+)
+
+__all__ = [
+    "DATASETS_DIR",
+    "OUTPUTS_DIR",
+    "CHECKPOINTS_DIR",
+    "LOGS_DIR",
+    "TENSORBOARD_DIR",
+    "FIGURES_DIR",
+    "BEST_MODEL_PATH",
+    "LAST_MODEL_PATH",
+]
