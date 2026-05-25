@@ -5,6 +5,8 @@ from config.paths import (
     FIGURES_DIR,
     LOGS_DIR,
     OUTPUTS_DIR,
+    PROCESSED_DATASETS_PATH,
+    RAW_DATASETS_PATH,
     TENSORBOARD_DIR,
 )
 
@@ -17,4 +19,6 @@ __all__ = [
     "FIGURES_DIR",
     "BEST_MODEL_PATH",
     "LAST_MODEL_PATH",
+    "RAW_DATASETS_PATH",
+    "PROCESSED_DATASETS_PATH",
 ]

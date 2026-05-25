@@ -11,6 +11,10 @@ def get_dir(path: Path) -> Path:
 
 # 数据集位置
 DATASETS_DIR = get_dir(ROOT / "datasets")
+# 原始数据集和处理后数据集的位置
+RAW_DATASETS_PATH = DATASETS_DIR / "raw.txt"
+PROCESSED_DATASETS_PATH = DATASETS_DIR / "processed.txt"
+
 
 # 产出位置
 OUTPUTS_DIR = get_dir(ROOT / "outputs")
