@@ -19,7 +19,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from config.defaults import TrainingParams
+from config.defaults import ModelParams, TrainingParams
 from config.paths import BEST_MODEL_PATH, LAST_MODEL_PATH
 from src.data.mapping import VocabMapping
 from src.train.checkpoint import save_checkpoint
@@ -73,7 +73,7 @@ class Trainer:
         # --- 可选参数(均来自 TrainingParams) ---
         epochs: int = TrainingParams.EPOCHS,
         grad_clip: float = TrainingParams.GRAD_CLIP,
-        teacher_forcing_ratio: float = TrainingParams.TEACHER_FORCING_RATIO,
+        teacher_forcing_ratio: float = ModelParams.TEACHER_FORCING_RATIO,
     ):
         self.model = model
         self.train_loader = train_loader
