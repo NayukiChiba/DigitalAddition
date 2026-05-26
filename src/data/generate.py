@@ -4,7 +4,7 @@
 随机生成 100 以内加减法算式及其结果,保存为 CSV 文件.
 
 规则:
-- 数字 a, b in [minNumber, maxNumber)
+- 数字 a, b ∈ [min_number, max_number)
 - 运算符随机抽取 + 或 -
 - 减法时若 a < b 则交换 a, b,保证结果非负
 - 输入序列:字符级表达式(如 "35+27")
@@ -29,23 +29,23 @@ from config.paths import (
 
 
 def generate_one_data(
-    minNumber: int = DataParams.MIN_NUMBER,
-    maxNumber: int = DataParams.MAX_NUMBER,
+    min_number: int = DataParams.MIN_NUMBER,
+    max_number: int = DataParams.MAX_NUMBER,
     operators: list = DataParams.OPERATORS,
 ) -> tuple[str, str]:
     """
     生成一个随机的加减法算式及其结果
     Args:
-        minNumber(int): 数字范围的最小值(包含)
-        maxNumber(int): 数字范围的最大值(不包含)
+        min_number(int): 数字范围的最小值(包含)
+        max_number(int): 数字范围的最大值(不包含)
         operators(list): 允许的运算符列表(如 ["+", "-"])
 
     Returns:
         input_seq(str): 字符级表达式(如 "35+27")
         output_seq(str): 字符级结果(如 "62")
     """
-    a = random.randint(minNumber, maxNumber - 1)
-    b = random.randint(minNumber, maxNumber - 1)
+    a = random.randint(min_number, max_number - 1)
+    b = random.randint(min_number, max_number - 1)
     op = random.choice(operators)
 
     if op == "+":
