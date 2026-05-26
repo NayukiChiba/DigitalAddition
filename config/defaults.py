@@ -56,7 +56,7 @@ class DataParams:
 class ModelParams:
     """Seq2Seq 模型结构参数(无 Attention)"""
 
-    RNN_TYPE = Literal["LSTM", "RNN", "GRU"] = "LSTM"  # RNN 类型(LSTM 或 GRU)
+    RNN_TYPE: Literal["LSTM", "RNN", "GRU"] = "LSTM"  # RNN 类型(LSTM 或 GRU)
 
     # 嵌入维度
     ENCODER_EMBEDDING_DIM = 128
