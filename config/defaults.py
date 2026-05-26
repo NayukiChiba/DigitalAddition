@@ -72,6 +72,14 @@ class ModelParams:
     # Encoder 是否使用双向 RNN
     BIDIRECTIONAL = False
 
+    # Teacher Forcing 概率
+    # 在训练过程中,教师强制(Teacher Forcing)是一种常用的技术
+    # 它在训练解码器时使用真实的目标输出作为输入,而不是模型的预测输出.
+    # TEACHER_FORCING_RATIO 定义了在每个时间步使用教师强制的概率.
+    # 例如,如果 TEACHER_FORCING_RATIO 设置为 0.5,那么在训练过程中有 50% 的时间步会使用真实的目标输出
+    # 另 50% 的时间步会使用模型的预测输出.这有助于模型更快地收敛,同时也能提高模型在推理阶段的性能.
+    TEACHER_FORCING_RATIO = 0.5
+
     # RNN Dropout(层数 > 1 时生效)
     DROPOUT = 0.3
 
@@ -92,14 +100,6 @@ class TrainingParams:
     LR_GAMMA = 0.5
     LR_REDUCE_FACTOR = 0.5
     LR_REDUCE_PATIENCE = 3
-
-    # Teacher Forcing 概率
-    # 在训练过程中,教师强制(Teacher Forcing)是一种常用的技术
-    # 它在训练解码器时使用真实的目标输出作为输入,而不是模型的预测输出.
-    # TEACHER_FORCING_RATIO 定义了在每个时间步使用教师强制的概率.
-    # 例如,如果 TEACHER_FORCING_RATIO 设置为 0.5,那么在训练过程中有 50% 的时间步会使用真实的目标输出
-    # 另 50% 的时间步会使用模型的预测输出.这有助于模型更快地收敛,同时也能提高模型在推理阶段的性能.
-    TEACHER_FORCING_RATIO = 0.5
 
     # 早停
     EARLY_STOP_PATIENCE = 5

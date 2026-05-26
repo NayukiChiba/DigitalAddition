@@ -98,16 +98,16 @@ class Decoder(nn.Module):
             hidden: 更新后的隐藏状态(可用于下一步自回归生成)
         """
         # Step 1: Embedding + Dropout
-        # (B, S) → (B, S, embedding_dim)
+        # [batch_size, seq_len] → [batch_size, seq_len, embedding_dim]
         embedded = self.dropout(self.embedding(input_ids))
 
         # Step 2: RNN 前向
-        # outputs: (B, S, hidden_dim)
-        # hidden: 更新后的 final hidden state
+        # outputs: [batch_size, seq_len, hidden_dim]
+        # hidden:  更新后的 final hidden state
         outputs, hidden = self.rnn(embedded, hidden)
 
         # Step 3: 线性投影到词表空间
-        # (B, S, hidden_dim) → (B, S, vocab_size)
+        # [batch_size, seq_len, hidden_dim] → [batch_size, seq_len, vocab_size]
         logits = self.output_layer(outputs)
 
         return logits, hidden
