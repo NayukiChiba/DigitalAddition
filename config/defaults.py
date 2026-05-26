@@ -62,12 +62,18 @@ class ModelParams:
     ENCODER_EMBEDDING_DIM = 128
     DECODER_EMBEDDING_DIM = 128
 
+    # 隐藏层维度(Encoder 与 Decoder 共享)
+    HIDDEN_DIM = 256
+
     # RNN 层数
     ENCODER_NUM_LAYERS = 2
     DECODER_NUM_LAYERS = 2
 
     # Encoder 是否使用双向 RNN
     BIDIRECTIONAL = False
+
+    # RNN Dropout(层数 > 1 时生效)
+    DROPOUT = 0.3
 
 
 class TrainingParams:
