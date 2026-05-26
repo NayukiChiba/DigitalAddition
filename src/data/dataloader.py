@@ -20,6 +20,8 @@ from typing import List, Tuple
 import torch
 from torch.utils.data import DataLoader, Dataset
 
+from config.defaults import DataParams
+from config.paths import RAW_TEST_PATH, RAW_TRAIN_PATH, RAW_VAL_PATH
 from src.data.mapping import VocabMapping
 
 
@@ -123,13 +125,13 @@ def collate_fn(
 
 
 def create_data_loaders(
-    train_csv_path: Path,
-    val_csv_path: Path,
-    test_csv_path: Path,
     vocab: VocabMapping,
-    batch_size: int = 128,
-    num_workers: int = 4,
-    pin_memory: bool = True,
+    train_csv_path: Path = RAW_TRAIN_PATH,
+    val_csv_path: Path = RAW_VAL_PATH,
+    test_csv_path: Path = RAW_TEST_PATH,
+    batch_size: int = DataParams.BATCH_SIZE,
+    num_workers: int = DataParams.NUM_WORKERS,
+    pin_memory: bool = DataParams.PIN_MEMORY,
 ) -> Tuple[DataLoader, DataLoader, DataLoader]:
     """
     创建训练集、验证集和测试集的 DataLoader
@@ -138,13 +140,13 @@ def create_data_loaders(
     验证集和测试集设 shuffle=False,保证每次评估结果一致可复现.
 
     Args:
-        train_csv_path: 训练集 CSV 文件路径
-        val_csv_path:   验证集 CSV 文件路径
-        test_csv_path:  测试集 CSV 文件路径
-        vocab:          VocabMapping 实例
-        batch_size:     批大小
-        num_workers:    DataLoader 工作进程数
-        pin_memory:     是否启用 pin_memory(GPU 训练时建议开启)
+        train_csv_path(Path): 训练集 CSV 文件路径
+        val_csv_path(Path):   验证集 CSV 文件路径
+        test_csv_path(Path):  测试集 CSV 文件路径
+        vocab(VocabMapping):          VocabMapping 实例
+        batch_size(int):     批大小
+        num_workers(int):    DataLoader 工作进程数
+        pin_memory(bool):  是否启用 pin_memory(GPU 训练时建议开启)
 
     Returns:
         (train_loader, val_loader, test_loader)
