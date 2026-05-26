@@ -28,8 +28,7 @@ class Encoder(nn.Module):
     输出 RNN 全部时刻的 outputs 和最后时刻的 hidden state.
 
     不使用 Attention,因此 Decoder 仅依赖 final hidden state 作为上下文.
-    这对 Encoder 提出了更高要求:必须将整个表达式的语义(数字、运算符、
-    计算逻辑)压缩到一个固定维度的向量中.
+    这对 Encoder 提出了更高要求:必须将整个表达式的语义(数字、运算符、计算逻辑)压缩到一个固定维度的向量中.
 
     Args:
         vocab_size: 词表大小(16,含特殊 token)
