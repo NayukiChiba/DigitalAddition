@@ -157,7 +157,7 @@ class VocabMapping:
 # ——— 工厂函数 ———
 
 
-def buildVocab() -> VocabMapping:
+def build_vocab() -> VocabMapping:
     """
     构建字符级词表(固定映射,不依赖数据)
 
