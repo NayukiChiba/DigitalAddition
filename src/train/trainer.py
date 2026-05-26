@@ -34,7 +34,7 @@ class Trainer:
 
     封装模型训练的完整流程.每个 epoch 执行以下步骤:
 
-    1. train_epoch()      — 训练模式:前向 → 损失 → 反向 → 梯度裁剪 → 参数更新
+    1. train_epoch()      — 训练模式:前向 -> 损失 -> 反向 -> 梯度裁剪 -> 参数更新
     2. validate_epoch()   — 验证模式:计算验证损失 + 完全匹配准确率
     3. scheduler.step()   — 学习率调度(Plateau 类型需传 val_loss)
     4. save_checkpoint()  — 保存最佳/最新模型
@@ -114,14 +114,14 @@ class Trainer:
         target_output:  [batch_size, decoder_length]     ← 如 [10, 6, 3]
         encoder_mask:   [batch_size, encoder_length]     ← True=有效, False=PAD
             │
-            ├─→ model.forward(teacher_forcing_ratio)
+            ├─-> model.forward(teacher_forcing_ratio)
             │   logits: [batch_size, decoder_length, vocab_size]
             │
-            ├─→ reshape + CrossEntropyLoss(ignore_index=0)
+            ├─-> reshape + CrossEntropyLoss(ignore_index=0)
             │   logits_flat: [batch_size × decoder_length, vocab_size]
             │   target_flat: [batch_size × decoder_length]
             │
-            └─→ loss.backward() → grad_clip → optimizer.step()
+            └─-> loss.backward() -> grad_clip -> optimizer.step()
 
         梯度裁剪原因:
         RNN 训练中梯度容易爆炸(vanishing/exploding gradients),
