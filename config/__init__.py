@@ -1,3 +1,10 @@
+from config.defaults import (
+    DataParams,
+    DefaultParams,
+    InferenceParams,
+    ModelParams,
+    TrainingParams,
+)
 from config.paths import (
     BEST_MODEL_PATH,
     CHECKPOINTS_DIR,
@@ -32,4 +39,9 @@ __all__ = [
     "PROCESSED_VAL_PATH",
     "PROCESSED_TEST_PATH",
     "PROCESSED_VOCAB_PATH",
+    "DefaultParams",
+    "DataParams",
+    "ModelParams",
+    "TrainingParams",
+    "InferenceParams",
 ]
