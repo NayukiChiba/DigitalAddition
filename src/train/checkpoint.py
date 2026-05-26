@@ -10,7 +10,7 @@ Checkpoint 管理模块
   原因:单个文件不会出现"部分文件丢失/版本不一致"的问题,
   恢复训练时只需加载一个文件即可获得完整状态
 - 词表保存为 VocabMapping.to_dict() 而非 torch.save 序列化
-  原因:to_dict() 产出普通的 Python dict → JSON 兼容格式,
+  原因:to_dict() 产出普通的 Python dict -> JSON 兼容格式,
   torch.save 序列化 torch.Tensor 对词表来说过重且不必要
 - load_checkpoint 使用 weights_only=False
   原因:checkpoint 文件包含非张量数据(epoch、validation_loss、vocab dict、
@@ -75,7 +75,7 @@ def save_checkpoint(
     - scheduler_state_dict: 学习率调度器状态(StepLR 的步数计数、
       ReduceLROnPlateau 的 patience 计数等)
     - validation_loss: 当前最佳验证损失,用于判断后续 epoch 是否改善
-    - vocab: 词表映射(VocabMapping → dict),恢复时用于 encode/decode
+    - vocab: 词表映射(VocabMapping -> dict),恢复时用于 encode/decode
       必须保存词表,因为不同训练运行生成的词表可能不同
     - early_stopping_state(可选): 早停计数器和最佳分数,
       不保存的话恢复训练后早停计数器归零,
@@ -167,7 +167,7 @@ def load_checkpoint(
     # 优化器恢复:需要先加载模型权重再加载优化器状态
     # 因为优化器的 state(如动量缓存)与参数内存地址绑定,
     # 而 load_state_dict(model) 会改变参数的内部存储,
-    # 所以必须按"模型 → 优化器"的顺序恢复
+    # 所以必须按"模型 -> 优化器"的顺序恢复
     if optimizer is not None and "optimizer_state_dict" in checkpoint:
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
 

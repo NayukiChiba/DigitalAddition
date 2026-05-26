@@ -24,7 +24,7 @@ class Encoder(nn.Module):
     """
     Seq2Seq 编码器
 
-    架构:Embedding → Dropout → RNN
+    架构:Embedding -> Dropout -> RNN
     输出 RNN 全部时刻的 outputs 和最后时刻的 hidden state.
 
     不使用 Attention,因此 Decoder 仅依赖 final hidden state 作为上下文.

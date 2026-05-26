@@ -4,7 +4,7 @@ Decoder 解码器模块(无 Attention)
 从 Encoder 的上下文向量出发,自回归地逐字符生成目标序列.
 训练时使用 Teacher Forcing,推理时使用贪心解码.
 
-架构:Embedding → Dropout → RNN → Linear(→ vocab_size)
+架构:Embedding -> Dropout -> RNN -> Linear(-> vocab_size)
 """
 
 from typing import Literal, Tuple
@@ -98,7 +98,7 @@ class Decoder(nn.Module):
             hidden: 更新后的隐藏状态(可用于下一步自回归生成)
         """
         # Step 1: Embedding + Dropout
-        # [batch_size, seq_len] → [batch_size, seq_len, embedding_dim]
+        # [batch_size, seq_len] -> [batch_size, seq_len, embedding_dim]
         embedded = self.dropout(self.embedding(input_ids))
 
         # Step 2: RNN 前向
@@ -107,7 +107,7 @@ class Decoder(nn.Module):
         outputs, hidden = self.rnn(embedded, hidden)
 
         # Step 3: 线性投影到词表空间
-        # [batch_size, seq_len, hidden_dim] → [batch_size, seq_len, vocab_size]
+        # [batch_size, seq_len, hidden_dim] -> [batch_size, seq_len, vocab_size]
         logits = self.output_layer(outputs)
 
         return logits, hidden

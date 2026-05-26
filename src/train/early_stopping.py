@@ -25,9 +25,9 @@ class EarlyStopping:
     判断逻辑:
     - 第一轮:记录基准分数(best_score = val_loss)
     - 后续轮:
-      - 如果 val_loss < best_score - min_delta → 有改善 → 更新 best_score,重置 counter
-      - 如果 val_loss >= best_score - min_delta → 无改善 → counter += 1
-      - counter >= patience → 触发停止
+      - 如果 val_loss < best_score - min_delta -> 有改善 -> 更新 best_score,重置 counter
+      - 如果 val_loss >= best_score - min_delta -> 无改善 -> counter += 1
+      - counter >= patience -> 触发停止
 
     min_delta 的作用:
     防止因浮点精度或微小波动导致的"假改善".
@@ -76,12 +76,12 @@ class EarlyStopping:
         # 第一轮:没有可比较的基准,直接记录
         if self.best_score is None:
             self.best_score = validation_loss
-        # 当前损失 >= 历史最佳 - delta → 没有显著改善
+        # 当前损失 >= 历史最佳 - delta -> 没有显著改善
         elif validation_loss > self.best_score - self.min_delta:
             self.counter += 1
             if self.counter >= self.patience:
                 self.should_stop = True
-        # 当前损失 < 历史最佳 - delta → 显著改善,重置 counter
+        # 当前损失 < 历史最佳 - delta -> 显著改善,重置 counter
         else:
             self.best_score = validation_loss
             self.counter = 0
